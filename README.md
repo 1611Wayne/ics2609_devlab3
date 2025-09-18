@@ -32,7 +32,7 @@ Start the server with `npm run dev`. By default it will listen on `http://localh
 
 ---
 
-## Using the API
+## How to run
 
 Once the server is running you can interact with it using any HTTP client.  
 Postman works well for testing because you can define an environment with a base URL (e.g. `http://localhost:3000/api`) and save variables such as a token.
@@ -50,31 +50,8 @@ This mirrors how most modern APIs handle authentication.
 
 ## Endpoints
 
-| Method | Endpoint             | Description                          |
-|--------|----------------------|--------------------------------------|
-| GET    | `/health`             | Health check for API and database.  |
-| POST   | `/auth/signup`        | Register a new user.                |
-| POST   | `/auth/login`         | Authenticate and return a JWT.      |
-| GET    | `/profile`            | Retrieve the logged-in user’s info (requires token). |
-| POST   | `/auth/logout`        | Revoke the current token (logout).  |
-
-The API responds with JSON. For protected routes, include `Authorization: Bearer <token>`.
-
----
-
-## Testing Ideas
-
-You can verify that the system handles both normal and error conditions:
-
-- Successful signup, login, profile access, and logout.
-- Attempt to sign up with an existing email (should return conflict).
-- Try logging in with a wrong password (unauthorized).
-- Access `/profile` without a token or with a revoked token (unauthorized).
-
-These cover the common scenarios you’d see in production.
-
----
-
-## License
-
-This project is intended for educational purposes.
+The API was built to respond to a small set of routes.  
+A health check endpoint was included so that the server and database status could be verified.  
+Signup and login endpoints were provided to handle registration and authentication.  
+A profile endpoint was protected by JWT and would only return data when a valid token was supplied.  
+A logout endpoint revoked tokens to simulate the act of logging out.
